@@ -1904,3 +1904,45 @@ register(
                 26.0)},
         'env_name': 'shop-hot-continuous-stochastic-v1',
         'action_definition': DEFAULT_SHOP_ACTION_DEFINITION})
+
+# ZEPHFRAME
+register(
+    id='Zephframe',
+    entry_point='sinergym.envs:EplusEnv',
+    kwargs={
+        'idf_file': 'ASHRAE9012016_OfficeMedium_Denver.idf',
+        'weather_file': 'USA_NY_New.York-J.F.Kennedy.Intl.AP.744860_TMY3.epw',
+        'observation_space': DEFAULT_OFFICE_OBSERVATION_SPACE,
+        'observation_variables': DEFAULT_OFFICE_OBSERVATION_VARIABLES,
+        'action_space': DEFAULT_OFFICE_ACTION_SPACE_DISCRETE,
+        'action_variables': DEFAULT_OFFICE_ACTION_VARIABLES,
+        'action_mapping': DEFAULT_OFFICE_ACTION_MAPPING,
+        'weather_variability': (1.0, 0.0, 0.001),
+        'reward': LinearReward,
+        'reward_kwargs': {
+            'temperature_variable': [
+                'Zone Air Temperature(Core_bottom)',
+                'Zone Air Temperature(TopFloor_Plenum)',
+                'Zone Air Temperature(MidFloor_Plenum)',
+                'Zone Air Temperature(FirstFloor_Plenum)',
+                'Zone Air Temperature(Core_mid)',
+                'Zone Air Temperature(Core_top)',
+                'Zone Air Temperature(Perimeter_top_ZN_3)',
+                'Zone Air Temperature(Perimeter_top_ZN_2)',
+                'Zone Air Temperature(Perimeter_top_ZN_1)',
+                'Zone Air Temperature(Perimeter_top_ZN_4)',
+                'Zone Air Temperature(Perimeter_bot_ZN_3)',
+                'Zone Air Temperature(Perimeter_bot_ZN_2)',
+                'Zone Air Temperature(Perimeter_bot_ZN_1)',
+                'Zone Air Temperature(Perimeter_bot_ZN_4)',
+                'Zone Air Temperature(Perimeter_mid_ZN_3)',
+                'Zone Air Temperature(Perimeter_mid_ZN_2)',
+                'Zone Air Temperature(Perimeter_mid_ZN_1)',
+                'Zone Air Temperature(Perimeter_mid_ZN_4)'
+            ],
+            'energy_variable': 'Facility Total HVAC Electricity Demand Rate(Whole Building)',
+            'range_comfort_winter': (18, 27),
+            'range_comfort_summer': (18, 27)
+        },
+        'env_name': 'zephframe',
+        'action_definition': DEFAULT_OFFICE_ACTION_DEFINITION})
