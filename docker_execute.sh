@@ -1,0 +1,1 @@
+docker run -it --rm -p 8080:8080 -p 8081:8081 -v C:\Users\Matheus\Documents\Zephframe\sinergym\:/root/my-project -w /root/my-project e3c1295b603a
