@@ -13,6 +13,7 @@ from stable_baselines3.common.logger import HumanOutputFormat, Logger
 from stable_baselines3.common.monitor import Monitor
 
 import sinergym
+import zephframe_sinergym
 import sinergym.utils.gcloud as gcloud
 from sinergym.utils.callbacks import *
 from sinergym.utils.constants import *

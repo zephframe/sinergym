@@ -1,6 +1,6 @@
 {
-    "id": "Zephframe-PPO",
-    "environment": "Eplus-office-mixed-discrete-stochastic-v1",
+    "id": "Zephframe-PPO-5Zone-linear-reward",
+    "environment": "Zephframe-5Zone-discrete-linear-reward",
     "episodes": 200,
     "algorithm": {
         "name": "SB3-PPO",
@@ -24,7 +24,7 @@
     "model": null,
     "wrappers": {
         "NormalizeObservation": {
-            "ranges": "sinergym.utils.constants.RANGES_OFFICE"
+            "ranges": "zephframe_sinergym.utils.constants.RANGES_5ZONE"
         },
         "LoggerWrapper": {
             "logger_class": "sinergym.utils.logger.CSVLogger",
@@ -37,8 +37,8 @@
     },
     "wandb": {
         "init_params": {
-            "project": "zf_test",
-            "entity": "zephframe"
+            "project": "zephframe-team",
+            "entity": "zephframeteam"
         },
         "artifact_name": "training",
         "artifact_type": "experiment1"
