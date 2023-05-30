@@ -12,6 +12,8 @@ from stable_baselines3.common.callbacks import CallbackList
 from stable_baselines3.common.logger import HumanOutputFormat, Logger
 from stable_baselines3.common.monitor import Monitor
 
+sys.path.append('/root/my-project/zephframe_sinergym')
+
 import sinergym
 import zephframe_sinergym
 import sinergym.utils.gcloud as gcloud

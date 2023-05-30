@@ -1,7 +1,7 @@
 {
     "id": "Zephframe-PPO-5Zone-linear-reward",
     "environment": "Zephframe-5Zone-discrete-linear-reward",
-    "episodes": 200,
+    "episodes": 30,
     "algorithm": {
         "name": "SB3-PPO",
         "log_interval": 1,
