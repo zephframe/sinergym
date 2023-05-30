@@ -1,0 +1,74 @@
+{
+    "id": "Zephframe-PPO-5Zone-linear-reward",
+    "environment": "Eplus-demo-v1",
+    "episodes": 30,
+    "algorithm": {
+        "name": "SB3-PPO",
+        "log_interval": 1,
+        "parameters": {
+            "policy": "MlpPolicy",
+            "verbose": 1,
+            "learning_rate": 0.0003,
+            "n_steps": 2048,
+            "batch_size": 64,
+            "n_epochs": 10,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip_range": 0.2,
+            "ent_coef": 0,
+            "vf_coef": 0.5,
+            "max_grad_norm": 0.5
+        }
+    },
+    "env_params": {
+        "idf_file": "5ZoneAutoDXVAV.idf",
+        "weather_file": "USA_PA_Pittsburgh-Allegheny.County.AP.725205_TMY3.epw",
+        "observation_space": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_OBSERVATION_SPACE",
+        "observation_variables": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_OBSERVATION_VARIABLES",
+        "action_space": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_ACTION_SPACE_DISCRETE",
+        "action_variables": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_ACTION_VARIABLES",
+        "action_mapping": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_ACTION_MAPPING",
+        "reward": "zephframe_sinergym.utils.rewards.LinearReward",
+        "reward_kwargs": {
+            "temperature_variable": [
+                "Zone Air Temperature(SPACE1-1)",
+                "Zone Air Temperature(SPACE2-1)",
+                "Zone Air Temperature(SPACE3-1)",
+                "Zone Air Temperature(SPACE4-1)",
+                "Zone Air Temperature(SPACE5-1)"
+            ],
+            "occupancy_variable": [
+                "Zone People Occupant Count(SPACE1-1)",
+                "Zone People Occupant Count(SPACE2-1)",
+                "Zone People Occupant Count(SPACE3-1)",
+                "Zone People Occupant Count(SPACE4-1)",
+                "Zone People Occupant Count(SPACE5-1)"
+            ],
+            "energy_variable": "Facility Total HVAC Electricity Demand Rate(Whole Building)"
+        },
+        "action_definition": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_ACTION_DEFINITION"
+    },
+    "seed": 3,
+    "model": null,
+    "wrappers": {
+        "NormalizeObservation": {
+            "ranges": "zephframe_sinergym.utils.constants.RANGES_5ZONE"
+        },
+        "LoggerWrapper": {
+            "logger_class": "sinergym.utils.logger.CSVLogger",
+            "flag": true
+        }
+    },
+    "evaluation": {
+        "eval_freq": 2,
+        "eval_length": 1
+    },
+    "wandb": {
+        "init_params": {
+            "project": "zephframe-team",
+            "entity": "zephframeteam"
+        },
+        "artifact_name": "training",
+        "artifact_type": "experiment1"
+    }
+}
