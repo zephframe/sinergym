@@ -14,6 +14,82 @@ with open(version_file, "r") as file_handler:
 # ---------------------------------------------------------------------------- #
 #                          5ZoneAutoDXVAV Environments                         #
 # ---------------------------------------------------------------------------- #
+# 0) Zephframe environment Linear Reward, 5-zone, discrete actions
+register(
+    id='Zephframe-5Zone-discrete-linear-reward',
+    entry_point='sinergym.envs:EplusEnv',
+    kwargs={
+        'idf_file': '5ZoneAutoDXVAV.idf',
+        'weather_file': 'USA_PA_Pittsburgh-Allegheny.County.AP.725205_TMY3.epw',
+        'observation_space': DEFAULT_5ZONE_OBSERVATION_SPACE,
+        'observation_variables': DEFAULT_5ZONE_OBSERVATION_VARIABLES,
+        'action_space': DEFAULT_5ZONE_ACTION_SPACE_DISCRETE,
+        'action_variables': DEFAULT_5ZONE_ACTION_VARIABLES,
+        'action_mapping': DEFAULT_5ZONE_ACTION_MAPPING,
+        'reward': LinearReward,
+        'reward_kwargs': {
+            'temperature_variable': [
+                'Zone Air Temperature(SPACE1-1)',
+                'Zone Air Temperature(SPACE2-1)',
+                'Zone Air Temperature(SPACE3-1)',
+                'Zone Air Temperature(SPACE4-1)',
+                'Zone Air Temperature(SPACE5-1)',
+            ],
+            'occupancy_variable': [
+                'Zone People Occupant Count(SPACE1-1)',
+                'Zone People Occupant Count(SPACE2-1)',
+                'Zone People Occupant Count(SPACE3-1)',
+                'Zone People Occupant Count(SPACE4-1)',
+                'Zone People Occupant Count(SPACE5-1)',
+            ],
+            'energy_variable': 'Facility Total HVAC Electricity Demand Rate(Whole Building)',
+            'range_comfort_winter': (
+                20.0,
+                23.5),
+            'range_comfort_summer': (
+                23.0,
+                26.0)},
+        'env_name': 'zephframe-5zone-linear',
+        'action_definition': DEFAULT_5ZONE_ACTION_DEFINITION})
+
+# Zephframe environment Linear Occupancy Reward, 5-zone, discrete actions
+register(
+    id='Zephframe-5Zone-discrete-linear-occupancy-reward',
+    entry_point='sinergym.envs:EplusEnv',
+    kwargs={
+        'idf_file': '5ZoneAutoDXVAV.idf',
+        'weather_file': 'USA_PA_Pittsburgh-Allegheny.County.AP.725205_TMY3.epw',
+        'observation_space': DEFAULT_5ZONE_OBSERVATION_SPACE,
+        'observation_variables': DEFAULT_5ZONE_OBSERVATION_VARIABLES,
+        'action_space': DEFAULT_5ZONE_ACTION_SPACE_DISCRETE,
+        'action_variables': DEFAULT_5ZONE_ACTION_VARIABLES,
+        'action_mapping': DEFAULT_5ZONE_ACTION_MAPPING,
+        'reward': LinearOccupancyReward,
+        'reward_kwargs': {
+            'temperature_variable': [
+                'Zone Air Temperature(SPACE1-1)',
+                'Zone Air Temperature(SPACE2-1)',
+                'Zone Air Temperature(SPACE3-1)',
+                'Zone Air Temperature(SPACE4-1)',
+                'Zone Air Temperature(SPACE5-1)',
+            ],
+            'occupancy_variable': [
+                'Zone People Occupant Count(SPACE1-1)',
+                'Zone People Occupant Count(SPACE2-1)',
+                'Zone People Occupant Count(SPACE3-1)',
+                'Zone People Occupant Count(SPACE4-1)',
+                'Zone People Occupant Count(SPACE5-1)',
+            ],
+            'energy_variable': 'Facility Total HVAC Electricity Demand Rate(Whole Building)',
+            'range_comfort_winter': (
+                20.0,
+                23.5),
+            'range_comfort_summer': (
+                23.0,
+                26.0)},
+        'env_name': 'zephframe-5zone-occupancy',
+        'action_definition': DEFAULT_5ZONE_ACTION_DEFINITION})
+
 # 0) Demo environment
 register(
     id='Eplus-demo-v1',

@@ -1,5 +1,5 @@
 {
-    "id": "Zephframe-PPO-5Zone-linear-reward",
+    "id": "PPO-30ep-5Zone-linear-reward",
     "environment": "Eplus-demo-v1",
     "episodes": 30,
     "algorithm": {
@@ -21,14 +21,7 @@
         }
     },
     "env_params": {
-        "idf_file": "5ZoneAutoDXVAV.idf",
-        "weather_file": "USA_PA_Pittsburgh-Allegheny.County.AP.725205_TMY3.epw",
-        "observation_space": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_OBSERVATION_SPACE",
-        "observation_variables": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_OBSERVATION_VARIABLES",
-        "action_space": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_ACTION_SPACE_DISCRETE",
-        "action_variables": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_ACTION_VARIABLES",
-        "action_mapping": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_ACTION_MAPPING",
-        "reward": "zephframe_sinergym.utils.rewards.LinearReward",
+        "reward": "LinearReward",
         "reward_kwargs": {
             "temperature_variable": [
                 "Zone Air Temperature(SPACE1-1)",
@@ -44,15 +37,18 @@
                 "Zone People Occupant Count(SPACE4-1)",
                 "Zone People Occupant Count(SPACE5-1)"
             ],
-            "energy_variable": "Facility Total HVAC Electricity Demand Rate(Whole Building)"
+            "energy_variable": "Facility Total HVAC Electricity Demand Rate(Whole Building)",
+            "range_comfort_winter": [20.0, 23.5],
+            "range_comfort_summer": [23.0, 26.0],
+            "energy_weight": 0.5
         },
-        "action_definition": "zephframe_sinergym.utils.constants.DEFAULT_5ZONE_ACTION_DEFINITION"
+        "act_repeat": 1
     },
     "seed": 3,
     "model": null,
     "wrappers": {
         "NormalizeObservation": {
-            "ranges": "zephframe_sinergym.utils.constants.RANGES_5ZONE"
+            "ranges": "sinergym.utils.constants.RANGES_5ZONE"
         },
         "LoggerWrapper": {
             "logger_class": "sinergym.utils.logger.CSVLogger",

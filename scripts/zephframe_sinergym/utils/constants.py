@@ -23,46 +23,6 @@ CWD = os.getcwd()
 # ---------------------------------------------------------------------------- #
 #                          Normalization dictionaries                          #
 # ---------------------------------------------------------------------------- #
-# RANGES_5ZONE = {'Facility Total HVAC Electricity Demand Rate(Whole Building)': [173.6583692738386,
-#                                                                                 32595.57259261767],
-#                 'People Air Temperature(SPACE1-1 PEOPLE 1)': [0.0, 30.00826655379267],
-#                 'Site Diffuse Solar Radiation Rate per Area(Environment)': [0.0, 588.0],
-#                 'Site Direct Solar Radiation Rate per Area(Environment)': [0.0, 1033.0],
-#                 'Site Outdoor Air Drybulb Temperature(Environment)': [-31.05437255409474,
-#                                                                       60.72839186915495],
-#                 'Site Outdoor Air Relative Humidity(Environment)': [3.0, 100.0],
-#                 'Site Wind Direction(Environment)': [0.0, 357.5],
-#                 'Site Wind Speed(Environment)': [0.0, 23.1],
-#                 'Space1-ClgSetP-RL': [21.0, 30.0],
-#                 'Space1-HtgSetP-RL': [15.0, 22.49999],
-#                 'Zone Air Relative Humidity(SPACE1-1)': [3.287277410867238,
-#                                                          87.60662171287048],
-#                 'Zone Air Temperature(SPACE1-1)': [15.22565264653451, 30.00826655379267],
-#                 'Zone People Occupant Count(SPACE1-1)': [0.0, 11.0],
-#                 'Zone Thermal Comfort Clothing Value(SPACE1-1 PEOPLE 1)': [0.0, 1.0],
-#                 'Zone Thermal Comfort Fanger Model PPD(SPACE1-1 PEOPLE 1)': [0.0,
-#                                                                              98.37141259444684],
-#                 'Zone Thermal Comfort Mean Radiant Temperature(SPACE1-1 PEOPLE 1)': [0.0,
-#                                                                                      35.98853496778508],
-#                 'Zone Thermostat Cooling Setpoint Temperature(SPACE1-1)': [21.0, 30.0],
-#                 'Zone Thermostat Heating Setpoint Temperature(SPACE1-1)': [15.0,
-#                                                                            22.49999046325684],
-#                 'comfort_penalty': [-6.508266553792669, -0.0],
-#                 'day': [1, 31],
-#                 'done': [False, True],
-#                 'hour': [0, 23],
-#                 'month': [1, 12],
-#                 'year': [1, 2022],
-#                 'reward': [-3.550779087370951, -0.0086829184636919],
-#                 'time (seconds)': [0, 31536000],
-#                 'timestep': [0, 35040],
-#                 'total_power_no_units': [-3.259557259261767, -0.0173658369273838],
-#                 # Added previous variables:
-#                 'Zone Thermostat Cooling Setpoint Temperature(SPACE1-1)_previous': [21.0, 30.0],
-#                 'Zone Thermostat Heating Setpoint Temperature(SPACE1-1)_previous': [15.0,
-#                                                                                     22.49999046325684],
-#                 'Zone Air Temperature(SPACE1-1)_previous': [15.22565264653451, 30.00826655379267]}
-
 RANGES_5ZONE = {
     'timestep': [0, 35040],
     'year': [1991.0, 1992.0],
@@ -374,25 +334,6 @@ RANGES_SHOP = {'Cooling_Setpoint_RL': [22.500051, 29.999975],
 # ---------------------------------------------------------------------------- #
 
 # -------------------------------------5ZONE---------------------------------- #
-
-# DEFAULT_5ZONE_OBSERVATION_VARIABLES = [
-#     'Site Outdoor Air Drybulb Temperature(Environment)',
-#     'Site Outdoor Air Relative Humidity(Environment)',
-#     'Site Wind Speed(Environment)',
-#     'Site Wind Direction(Environment)',
-#     'Site Diffuse Solar Radiation Rate per Area(Environment)',
-#     'Site Direct Solar Radiation Rate per Area(Environment)',
-#     'Zone Thermostat Heating Setpoint Temperature(SPACE1-1)',
-#     'Zone Thermostat Cooling Setpoint Temperature(SPACE1-1)',
-#     'Zone Air Temperature(SPACE1-1)',
-#     'Zone Thermal Comfort Mean Radiant Temperature(SPACE1-1 PEOPLE 1)',
-#     'Zone Air Relative Humidity(SPACE1-1)',
-#     'Zone Thermal Comfort Clothing Value(SPACE1-1 PEOPLE 1)',
-#     'Zone Thermal Comfort Fanger Model PPD(SPACE1-1 PEOPLE 1)',
-#     'Zone People Occupant Count(SPACE1-1)',
-#     'People Air Temperature(SPACE1-1 PEOPLE 1)',
-#     'Facility Total HVAC Electricity Demand Rate(Whole Building)'
-# ]
 
 DEFAULT_5ZONE_OBSERVATION_VARIABLES = [
     'Site Outdoor Air Drybulb Temperature(Environment)',

@@ -1,6 +1,6 @@
 {
-    "id": "Zephframe-PPO-5Zone-linear-reward",
-    "environment": "Zephframe-5Zone-discrete-linear-reward",
+    "id": "PPO-30ep-5Zone-linear-occ-reward",
+    "environment": "Zephframe-5Zone-discrete-linear-occupancy-reward",
     "episodes": 30,
     "algorithm": {
         "name": "SB3-PPO",
@@ -24,7 +24,7 @@
     "model": null,
     "wrappers": {
         "NormalizeObservation": {
-            "ranges": "zephframe_sinergym.utils.constants.RANGES_5ZONE"
+            "ranges": "sinergym.utils.constants.RANGES_5ZONE"
         },
         "LoggerWrapper": {
             "logger_class": "sinergym.utils.logger.CSVLogger",
