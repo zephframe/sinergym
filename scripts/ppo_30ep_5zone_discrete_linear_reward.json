@@ -30,13 +30,6 @@
                 "Zone Air Temperature(SPACE4-1)",
                 "Zone Air Temperature(SPACE5-1)"
             ],
-            "occupancy_variable": [
-                "Zone People Occupant Count(SPACE1-1)",
-                "Zone People Occupant Count(SPACE2-1)",
-                "Zone People Occupant Count(SPACE3-1)",
-                "Zone People Occupant Count(SPACE4-1)",
-                "Zone People Occupant Count(SPACE5-1)"
-            ],
             "energy_variable": "Facility Total HVAC Electricity Demand Rate(Whole Building)",
             "range_comfort_winter": [20.0, 23.5],
             "range_comfort_summer": [23.0, 26.0],
