@@ -1,5 +1,5 @@
 {
-    "id": "LoadExample",
+    "id": "LoadLinearReward",
     "environment": "Eplus-demo-v1",
     "episodes": 5,
     "algorithm": {
@@ -23,7 +23,8 @@
             "range_comfort_summer": [
                 23.0,
                 26.0
-            ]
+            ],
+            "energy_weight": 0.5
         },
         "act_repeat": 1
     },
@@ -40,18 +41,10 @@
     },
     "wandb": {
         "init_params": {
-            "project": "test-evaluations",
+            "project": "zephframe-evaluations",
             "entity": "zephframeteam"
         },
         "artifact_name": "evaluating",
-        "artifact_type": "evaluation1",
-        "load_model": {
-            "project": "zephframe-team",
-            "entity": "zephframeteam",
-            "artifact_name": "training",
-            "artifact_type": "experiment1",
-            "artifact_tag": "v0",
-            "artifact_path": "evaluation_output/best_model/model.zip"
-        }
+        "artifact_type": "evaluation1"
     }
 }
