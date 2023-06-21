@@ -1,0 +1,56 @@
+{
+    "id": "office-PPO-60ep-hourly-reward",
+    "environment": "Eplus-office-mixed-discrete-v1",
+    "episodes": 60,
+    "algorithm": {
+        "name": "SB3-PPO",
+        "log_interval": 1,
+        "parameters": {
+            "policy": "MlpPolicy",
+            "verbose": 1,
+            "learning_rate": 0.0003,
+            "n_steps": 2048,
+            "batch_size": 64,
+            "n_epochs": 10,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip_range": 0.2,
+            "ent_coef": 0,
+            "vf_coef": 0.5,
+            "max_grad_norm": 0.5
+        }
+    },
+    "env_params": {
+        "reward": "HourlyLinearReward",
+        "reward_kwargs": {
+            "range_comfort_winter": [20.0, 23.5],
+            "range_comfort_summer": [23.0, 26.0],
+            "min_energy_weight": 0.5,
+            "range_comfort_hours": [7, 22]
+        },
+        "act_repeat": 1
+    },
+    "seed": 3,
+    "model": null,
+    "wrappers": {
+        "NormalizeObservation": {
+            "ranges": "sinergym.utils.constants.RANGES_OFFICE"
+        },
+        "LoggerWrapper": {
+            "logger_class": "sinergym.utils.logger.CSVLogger",
+            "flag": true
+        }
+    },
+    "evaluation": {
+        "eval_freq": 2,
+        "eval_length": 1
+    },
+    "wandb": {
+        "init_params": {
+            "project": "zephframe-team",
+            "entity": "zephframeteam"
+        },
+        "artifact_name": "training",
+        "artifact_type": "experiment1"
+    }
+}
