@@ -12,7 +12,7 @@ from sinergym.utils.rewards import *
 from sinergym.utils.wrappers import *
 
 # Environment ID
-environment = "Eplus-demo-v1"
+environment = "Eplus-office-mixed-discrete-v1"
 #Name of the experiment
 experiment_date = datetime.today().strftime('%Y-%m-%d_%H:%M')
 experiment_name = 'no-agent-' + environment

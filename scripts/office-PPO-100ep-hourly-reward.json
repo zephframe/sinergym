@@ -1,7 +1,7 @@
 {
-    "id": "office-PPO-60ep-hourly-reward",
+    "id": "office-PPO-100ep-hourly-reward",
     "environment": "Eplus-office-mixed-discrete-v1",
-    "episodes": 60,
+    "episodes": 100,
     "algorithm": {
         "name": "SB3-PPO",
         "log_interval": 1,
@@ -23,6 +23,27 @@
     "env_params": {
         "reward": "HourlyLinearReward",
         "reward_kwargs": {
+            "temperature_variable": [
+                "Zone Air Temperature(Core_bottom)",
+                "Zone Air Temperature(TopFloor_Plenum)",
+                "Zone Air Temperature(MidFloor_Plenum)",
+                "Zone Air Temperature(FirstFloor_Plenum)",
+                "Zone Air Temperature(Core_mid)",
+                "Zone Air Temperature(Core_top)",
+                "Zone Air Temperature(Perimeter_top_ZN_3)",
+                "Zone Air Temperature(Perimeter_top_ZN_2)",
+                "Zone Air Temperature(Perimeter_top_ZN_1)",
+                "Zone Air Temperature(Perimeter_top_ZN_4)",
+                "Zone Air Temperature(Perimeter_bot_ZN_3)",
+                "Zone Air Temperature(Perimeter_bot_ZN_2)",
+                "Zone Air Temperature(Perimeter_bot_ZN_1)",
+                "Zone Air Temperature(Perimeter_bot_ZN_4)",
+                "Zone Air Temperature(Perimeter_mid_ZN_3)",
+                "Zone Air Temperature(Perimeter_mid_ZN_2)",
+                "Zone Air Temperature(Perimeter_mid_ZN_1)",
+                "Zone Air Temperature(Perimeter_mid_ZN_4)"
+            ],
+            "energy_variable": "Facility Total HVAC Electricity Demand Rate(Whole Building)",
             "range_comfort_winter": [20.0, 23.5],
             "range_comfort_summer": [23.0, 26.0],
             "min_energy_weight": 0.5,
