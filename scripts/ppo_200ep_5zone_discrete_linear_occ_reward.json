@@ -1,7 +1,7 @@
 {
     "id": "PPO-200ep-5Zone-linear-occ-reward",
     "environment": "Zephframe-5Zone-discrete-linear-occupancy-reward",
-    "episodes": 30,
+    "episodes": 200,
     "algorithm": {
         "name": "SB3-PPO",
         "log_interval": 1,

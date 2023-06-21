@@ -1,0 +1,96 @@
+{
+    "id": "PPO-30ep-5Zone-linear-reward",
+    "environment": "Eplus-office-mixed-discrete-stochastic-v1",
+    "episodes": 200,
+    "algorithm": {
+        "name": "SB3-PPO",
+        "log_interval": 1,
+        "parameters": {
+            "policy": "MlpPolicy",
+            "verbose": 1,
+            "learning_rate": 0.0003,
+            "n_steps": 2048,
+            "batch_size": 64,
+            "n_epochs": 10,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip_range": 0.2,
+            "ent_coef": 0,
+            "vf_coef": 0.5,
+            "max_grad_norm": 0.5
+        }
+    },
+    "env_params": {
+        "reward": "LinearOccupancyReward",
+        "reward_kwargs": {
+            "temperature_variable": [
+                "Zone Air Temperature(Core_bottom)",
+                "Zone Air Temperature(TopFloor_Plenum)",
+                "Zone Air Temperature(MidFloor_Plenum)",
+                "Zone Air Temperature(FirstFloor_Plenum)",
+                "Zone Air Temperature(Core_mid)",
+                "Zone Air Temperature(Core_top)",
+                "Zone Air Temperature(Perimeter_top_ZN_3)",
+                "Zone Air Temperature(Perimeter_top_ZN_2)",
+                "Zone Air Temperature(Perimeter_top_ZN_1)",
+                "Zone Air Temperature(Perimeter_top_ZN_4)",
+                "Zone Air Temperature(Perimeter_bot_ZN_3)",
+                "Zone Air Temperature(Perimeter_bot_ZN_2)",
+                "Zone Air Temperature(Perimeter_bot_ZN_1)",
+                "Zone Air Temperature(Perimeter_bot_ZN_4)",
+                "Zone Air Temperature(Perimeter_mid_ZN_3)",
+                "Zone Air Temperature(Perimeter_mid_ZN_2)",
+                "Zone Air Temperature(Perimeter_mid_ZN_1)",
+                "Zone Air Temperature(Perimeter_mid_ZN_4)"
+            ],
+            "occupancy_variable": [
+                "Zone People Occupant Count(Core_bottom)",
+                "Zone People Occupant Count(TopFloor_Plenum)",
+                "Zone People Occupant Count(MidFloor_Plenum)",
+                "Zone People Occupant Count(FirstFloor_Plenum)",
+                "Zone People Occupant Count(Core_mid)",
+                "Zone People Occupant Count(Core_top)",
+                "Zone People Occupant Count(Perimeter_top_ZN_3)",
+                "Zone People Occupant Count(Perimeter_top_ZN_2)",
+                "Zone People Occupant Count(Perimeter_top_ZN_1)",
+                "Zone People Occupant Count(Perimeter_top_ZN_4)",
+                "Zone People Occupant Count(Perimeter_bot_ZN_3)",
+                "Zone People Occupant Count(Perimeter_bot_ZN_2)",
+                "Zone People Occupant Count(Perimeter_bot_ZN_1)",
+                "Zone People Occupant Count(Perimeter_bot_ZN_4)",
+                "Zone People Occupant Count(Perimeter_mid_ZN_3)",
+                "Zone People Occupant Count(Perimeter_mid_ZN_2)",
+                "Zone People Occupant Count(Perimeter_mid_ZN_1)",
+                "Zone People Occupant Count(Perimeter_mid_ZN_4)"
+            ],
+            "energy_variable": "Facility Total HVAC Electricity Demand Rate(Whole Building)",
+            "range_comfort_winter": [18, 27],
+            "range_comfort_summer": [18, 27],
+            "energy_weight": 0.5
+        },
+        "act_repeat": 1
+    },
+    "seed": 3,
+    "model": null,
+    "wrappers": {
+        "NormalizeObservation": {
+            "ranges": "sinergym.utils.constants.RANGES_5ZONE"
+        },
+        "LoggerWrapper": {
+            "logger_class": "sinergym.utils.logger.CSVLogger",
+            "flag": true
+        }
+    },
+    "evaluation": {
+        "eval_freq": 2,
+        "eval_length": 1
+    },
+    "wandb": {
+        "init_params": {
+            "project": "zephframe-team",
+            "entity": "zephframeteam"
+        },
+        "artifact_name": "training",
+        "artifact_type": "office-medium-occupancy-reward"
+    }
+}
